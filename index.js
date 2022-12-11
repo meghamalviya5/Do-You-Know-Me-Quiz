@@ -1,7 +1,7 @@
 var readlineSync = require("readline-sync");
 var username = readlineSync.question("What's your name? ")
 
-console.log("Welcome" + username + "to DO YOU KNOW MEGHA? ")
+console.log("Welcome " + username + " to DO YOU KNOW MEGHA? ")
 var userScore = 0;
 var questionList = [
   {
@@ -29,47 +29,40 @@ var questionList = [
 var highScores = [
   {
     name: "Bee",
-    score: 1
+    score: 4
   },
   {
     name: "Ark",
-    score: 0
+    score: 3
   }
 ]
 
-function play(question, answer)
-{
+function play(question, answer) {
   var userAnswer = readlineSync.question(question);
-  if(userAnswer === answer)
-  {
+  if (userAnswer.toLowerCase() === answer.toLowerCase()) {
     console.log("You are right!");
     userScore++;
   }
-  else
-  {
+  else {
     console.log("You are wrong!");
   }
-  console.log("Score is: "+ userScore);
+  console.log("Score is: " + userScore);
   console.log("-----------------");
 }
 
-for(var i = 0; i < questionList.length; i++)
-{
+for (var i = 0; i < questionList.length; i++) {
   play(questionList[i].question, questionList[i].answer);
 }
 
-console.log("YAY! Your Score is: "+ userScore);
+console.log("YAY! Your Score is: " + userScore);
 var highest = 0;
-for(var i = 0; i < highScores.length; i++)
-{
-  if(highest < highScores[i].score)
-  {
+for (var i = 0; i < highScores.length; i++) {
+  if (highest < highScores[i].score) {
     highest = highScores[i].score;
   }
 }
 
-if(userScore > highest)
-{
+if (userScore > highest) {
   console.log("Hooray! You have beaten the high score!");
   console.log("Send screenshot of your score to get your score updated in high scores list.");
 }
